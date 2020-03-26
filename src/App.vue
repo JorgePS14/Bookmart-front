@@ -3,7 +3,6 @@
     <v-app-bar app>
       <h1>Bookmart</h1>
     </v-app-bar>
-    
     <router-view/>
   </v-app>
 </template>
