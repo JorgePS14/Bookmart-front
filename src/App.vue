@@ -1,20 +1,23 @@
 <template>
   <v-app id="app">
-    <v-app-bar app>
-      <h1>Bookmart</h1>
-    </v-app-bar>
+    <Navbar></Navbar>
     
     <router-view/>
   </v-app>
 </template>
 
 <script>
+import Navbar from './views/Navbar'
+
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components: {
+    Navbar
   }
 }
 </script>
