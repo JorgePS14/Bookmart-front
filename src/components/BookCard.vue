@@ -1,21 +1,21 @@
 <template>
     <v-card
         class="mx-auto"
-        max-width="400"
+        min-height="300px"
         style="background-color: white"
     >
         <v-img
             class="white--text align-end"
-            height="200px"
-            :src="require('../assets/books-default.jpg')"
+            height="140px"
+            background-color="white"
+            :src="img"
         >
         </v-img>
 
         <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
 
         <v-card-text class="text--primary">
-            <div>Whitehaven Beach</div>
-            <div>Whitsunday Island, Whitsunday Islands</div>
+            <h4>{{bookData['description']}}</h4>
         </v-card-text>
 
         <v-card-actions>
@@ -38,6 +38,16 @@
 
 <script>
 export default {
-    name: 'BookCard'
+    name: 'BookCard',
+    props: ['bookData'],
+    data() {
+        return {
+            img: "../assets/books-default.jpg"
+        }
+    },
+    mounted() {
+        console.log(this.img)
+        this.img = this.bookData['photo']
+    }
 }
 </script>

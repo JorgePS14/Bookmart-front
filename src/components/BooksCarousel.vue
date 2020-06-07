@@ -1,24 +1,24 @@
 <template>
     <v-carousel 
         :hide-delimiters="true"
-        height="400px"
+        height="350px"
         class="top-down fade"
         :show-arrows-on-hover="true"
         :cycle="false"
     >
         <v-carousel-item
-            v-for="(item,i) in items"
+            v-for="i in Math.ceil(books.length / 4)"
             :key="i"
         >
             <v-container class="fluid" >
                 <v-row>
                     <v-col
-                        v-for="n in 4"
-                        :key="n"
+                        v-for="j in 4"
+                        :key="j"
                         cols="16"
                         sm="3"
                     >
-                        <BookCard />
+                        <BookCard :bookData="books[j + ((i - 1) * 4) - 1]" />
                     </v-col>
                 </v-row>
             </v-container>
@@ -39,8 +39,12 @@ export default {
     mounted: function () {
         const path = "http://0.0.0.0:5000/api/listing"
         axios.get(path).then((response) => {
-            console.log(response.data);
-            
+            for (var i in response.data) {
+                var book = response.data[i];
+                book['photo'] = book['photo'].substring(2, book['photo'].length - 1);
+                this.books.push(book);
+                console.log(this.books[i]['photo'])
+            }
         })
         .catch((error) => {
             console.log(error)
@@ -48,6 +52,7 @@ export default {
     },
     data () {
         return {
+            books:[],
             items: [
                 1,
                 2,
