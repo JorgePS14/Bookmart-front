@@ -1,5 +1,6 @@
 <template>
   <v-app id="app">
+  <v-content>
     <Navbar></Navbar>
     <transition
       name="fade"
@@ -7,6 +8,7 @@
       >
       <router-view/>
     </transition>
+  </v-content>
   </v-app>
 </template>
 
@@ -32,8 +34,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: hsl(210, 29%, 24%);
 }
 
 h1, h2 {

@@ -22,7 +22,9 @@
     <v-toolbar-items>
       <v-btn text>Buy</v-btn>
       <v-btn text>Sell</v-btn>
-      <v-btn text to="/register">Log In | Register</v-btn>
+      <v-btn v-if='!isLoggedIn' text to="/login">Log in</v-btn>
+      <v-btn v-if='!isLoggedIn' text to="/register">Register</v-btn>
+      <v-btn v-if='isLoggedIn' text v-on:click="logout">Logout</v-btn>
     </v-toolbar-items>
   </v-app-bar>
 </template>
@@ -34,6 +36,19 @@ export default {
         select: null
     }
   },
+  methods: {
+    logout: function() {
+        this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+    }
+  },
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.getters.isLoggedIn
+    }
+  }
 };
 </script>
 
