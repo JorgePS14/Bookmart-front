@@ -39,10 +39,15 @@ export default new Vuex.Store({
                     if (!token){
                         throw 500;
                     }
-                    localStorage.setItem('user-token', token);
-                    http.defaults.headers.common['Authorization'] = token
-                    commit('auth_success', {token, user});
-                    resolve()
+                    http.get('/api/user/' + user.email).then(user => {
+                        localStorage.setItem('user-token', token);
+                        http.defaults.headers.common['Authorization'] = token
+                        commit('auth_success', {token, user});
+                        resolve()
+                    })
+                    .catch(error => {
+                        throw error
+                    })
                 }).catch(error => {
                     commit('auth_error')
                     localStorage.removeItem('user-token');

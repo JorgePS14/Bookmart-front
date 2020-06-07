@@ -15,7 +15,7 @@ export default {
             return this.$store.getters.isLoggedIn
         },
         user: function () {
-            return this.$store.state.user.email;
+            return this.$store.state.user.username;
         }
     }
 }
