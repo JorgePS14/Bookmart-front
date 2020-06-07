@@ -17,19 +17,19 @@
                             label="Email"
                             outlined
                         ></v-text-field>
-                         <v-text-field v-model="location"
+                        <v-text-field v-model="location"
                             label="Location"
                             outlined
                         ></v-text-field>
-                         <v-text-field v-model="university"
+                        <v-text-field v-model="university"
                             label="University"
                             outlined
                         ></v-text-field>
-                         <v-text-field v-model="semester"
+                        <v-text-field v-model="semester"
                             label="Semester"
                             outlined
                         ></v-text-field>
-                         <v-text-field v-model="major"
+                        <v-text-field v-model="major"
                             label="Major"
                             outlined
                         ></v-text-field>
@@ -69,7 +69,7 @@ export default {
                 "major" : this.major,
             };
 
-           const path = "http://localhost:8000/api/user"
+            const path = "http://0.0.0.0:5000/signup"
             axios.post(path, user).then((response) => {
                 console.log(response);
             })

@@ -2,7 +2,7 @@
   <v-app-bar
     app
     dark
-    color="indigo darken-4"
+    color="#151e29"
     >
     <v-img class="mx-2" src="../src/assets/logo.png" max-height="30" max-width="30" contain></v-img>
     <router-link to="/" class="router-link">

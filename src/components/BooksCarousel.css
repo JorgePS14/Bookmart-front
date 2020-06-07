@@ -1,0 +1,3 @@
+.top-down.fade {
+    background: linear-gradient(to top, rgba(255,255,255,1) 75%, rgba(255,255,255,0.0) 100%);
+}
