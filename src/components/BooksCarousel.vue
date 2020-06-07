@@ -1,7 +1,10 @@
 <template>
     <v-carousel 
-        hide-delimiters
+        :hide-delimiters="true"
+        height="400px"
         class="top-down fade"
+        :show-arrows-on-hover="true"
+        :cycle="false"
     >
         <v-carousel-item
             v-for="(item,i) in items"
@@ -26,10 +29,22 @@
 <script>
 import './BooksCarousel.css'
 import BookCard from './BookCard'
+import axios from 'axios'
+
 export default {
     name: 'BooksCarousel',
     components: {
         'BookCard': BookCard,
+    },
+    mounted: function () {
+        const path = "http://0.0.0.0:5000/api/listing"
+        axios.get(path).then((response) => {
+            console.log(response.data);
+            
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     },
     data () {
         return {
@@ -37,7 +52,6 @@ export default {
                 1,
                 2,
                 3,
-                4
             ]
         }
     },

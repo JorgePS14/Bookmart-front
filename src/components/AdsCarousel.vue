@@ -2,7 +2,7 @@
     <v-carousel
         cycle
         height="650px"
-        hide-delimiters
+        :hide-delimiters="true"
         :show-arrows="false"
     >
         <v-carousel-item
