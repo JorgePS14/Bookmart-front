@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AdsCarousel />
+        <AdsCarousel style="margin-top:-12px" />
         <BooksCarousel style="margin-top: -300px"/>
     </div>
 </template>

@@ -11,7 +11,7 @@
         >
         <v-sheet
             color="white"
-            height="120%"
+            height="100%"
         >
             <v-row
                 class="fill-height"
@@ -46,7 +46,6 @@ export default {
                 'deep-purple accent-4',
             ],
             slides: [
-                'adcar1',
                 'adcar2',
                 'adcar3',
                 'adcar4',

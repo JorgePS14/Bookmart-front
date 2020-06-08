@@ -1,9 +1,11 @@
 <template>
+<v-app>
     <v-carousel 
         :hide-delimiters="true"
         height="350px"
         class="top-down fade"
         :show-arrows-on-hover="true"
+        :show-arrows="true"
         :cycle="false"
     >
         <v-carousel-item
@@ -24,6 +26,7 @@
             </v-container>
         </v-carousel-item>
     </v-carousel>
+</v-app>
 </template>
 
 <script>
