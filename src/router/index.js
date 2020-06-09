@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Register from '../views/Register'
+import BookData from '../views/BookData'
 import Book from '../views/Book'
 import Home from '../views/Home'
 import Listing from '../views/Listing'
@@ -20,6 +21,11 @@ export default new Router({
             path: '/register',
             name: 'Register',
             component: Register
+        },
+        {
+            path: '/bookData',
+            name: 'BookData',
+            component: BookData
         },
         {
             path: '/book',

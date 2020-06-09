@@ -1,12 +1,15 @@
 <template>
+    <v-hover
+        v-slot:default="{ hover }"
+    >
     <v-card
-        :loading="loading"
+        :elevation="hover ? 16 : 2"
         class="mx-auto"
         color="white"
     >
         <v-img
-        height="140"
-        :src="img"
+            height="140"
+            :src="img"
         ></v-img>
 
         <div class="my-2 subtitle-1 ellipsis" style="color: black">{{bookData['description']}}</div>
@@ -26,12 +29,13 @@
                     size="17"
                 ></v-rating>
 
-                <div class="grey--text ml-2">{{rating}} ({{Math.floor(Math.random() * 1000)}})</div>
+                <div class="grey--text ml-2">{{rating}} ({{numOfRates}})</div>
             </v-row>
         </v-card-text>
         <v-divider class="mx-4" light></v-divider>
         <v-card-subtitle class="mx-1 text-md-center title" style="color: black">• ${{bookData['price']}} • </v-card-subtitle>
     </v-card>
+    </v-hover>
 </template>
 
 <script>
@@ -39,7 +43,7 @@ import '../styles/BookCard.css'
 
 export default {
     name: 'BookCard',
-    props: ['bookData', 'rating'],
+    props: ['bookData', 'rating', 'numOfRates'],
     data() {
         return {
             img: "../assets/books-default.jpg",

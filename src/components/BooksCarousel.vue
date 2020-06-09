@@ -21,8 +21,10 @@
                         sm="2"
                     >
                         <BookCard
+                            @click.native="onCardSelected(books[j + ((i - 1) * 6) - 1])"
                             :bookData="books[j + ((i - 1) * 6) - 1]"
                             :rating="ratings[Math.floor(Math.random() * ratings.length)]"
+                            :numOfRates="Math.floor(Math.random() * 1000)"
                         ></BookCard>
                     </v-col>
                 </v-row>
@@ -35,12 +37,19 @@
 <script>
 import '../styles/BooksCarousel.css'
 import BookCard from './BookCard'
+import router from '../router'
 import axios from 'axios'
 
 export default {
     name: 'BooksCarousel',
     components: {
         'BookCard': BookCard,
+    },
+    methods: {
+        onCardSelected: function (bookData) {
+            console.log(bookData['description']);
+            router.push('bookData')
+        }
     },
     mounted: function () {
         const path = "http://0.0.0.0:5000/api/listing"
