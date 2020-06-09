@@ -20,7 +20,10 @@
                         cols="16"
                         sm="3"
                     >
-                        <BookCard :bookData="books[j + ((i - 1) * 4) - 1]" />
+                        <BookCard
+                            :bookData="books[j + ((i - 1) * 4) - 1]"
+                            :rating="ratings[Math.floor(Math.random() * ratings.length)]"
+                        ></BookCard>
                     </v-col>
                 </v-row>
             </v-container>
@@ -30,7 +33,7 @@
 </template>
 
 <script>
-import './BooksCarousel.css'
+import '../styles/BooksCarousel.css'
 import BookCard from './BookCard'
 import axios from 'axios'
 
@@ -56,11 +59,7 @@ export default {
     data () {
         return {
             books:[],
-            items: [
-                1,
-                2,
-                3,
-            ]
+            ratings: [3.0, 3.5, 4.0, 4.5, 5.0],
         }
     },
 }

@@ -1,48 +1,48 @@
 <template>
     <v-card
-        class="mx-auto"
-        min-height="300px"
-        style="background-color: white"
+        :loading="loading"
+        class="mx-auto my-12"
+        color="white"
     >
         <v-img
-            class="white--text align-end"
-            height="140px"
-            background-color="white"
-            :src="img"
-        >
-        </v-img>
+        height="100"
+        :src="img"
+        ></v-img>
 
-        <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
+        <div class="my-2 subtitle-1 ellipsis" style="color: black">{{bookData['description']}}</div>
+        <v-card-text style="margin-top: -24px">
+            <v-row
+                align="center"
+                class="mx-0"
+            >
+                <v-rating
+                    :value="rating"
+                    color="amber"
+                    background-color="amber lighten-3"
+                    dense
+                    half-increments
+                    readonly
+                    size="17"
+                ></v-rating>
 
-        <v-card-text class="text--primary">
-            <h4>{{bookData['description']}}</h4>
+                <div class="grey--text ml-2">{{rating}} ({{Math.floor(Math.random() * 1000)}})</div>
+            </v-row>
         </v-card-text>
-
-        <v-card-actions>
-        <v-btn
-            color="orange"
-            text
-        >
-            Share
-        </v-btn>
-
-        <v-btn
-            color="orange"
-            text
-        >
-            Explore
-        </v-btn>
-        </v-card-actions>
+        <v-divider class="mx-4" light></v-divider>
+        <v-card-subtitle class="mx-1 text-md-center title" style="color: black">• ${{bookData['price']}} • </v-card-subtitle>
     </v-card>
 </template>
 
 <script>
+import '../styles/BookCard.css'
+
 export default {
     name: 'BookCard',
-    props: ['bookData'],
+    props: ['bookData', 'rating'],
     data() {
         return {
-            img: "../assets/books-default.jpg"
+            img: "../assets/books-default.jpg",
+            ratings: [3.0, 3.5, 4.0, 4.5, 5.0],
         }
     },
     mounted() {
