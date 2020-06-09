@@ -2,26 +2,26 @@
 <v-app>
     <v-carousel 
         :hide-delimiters="true"
-        height="350px"
+        height="400px"
         class="top-down fade"
         :show-arrows-on-hover="true"
         :show-arrows="true"
         :cycle="false"
     >
         <v-carousel-item
-            v-for="i in Math.ceil(books.length / 4)"
+            v-for="i in Math.ceil(books.length / 6)"
             :key="i"
         >
             <v-container class="fluid" >
                 <v-row>
                     <v-col
-                        v-for="j in 4"
+                        v-for="j in 6"
                         :key="j"
                         cols="16"
-                        sm="3"
+                        sm="2"
                     >
                         <BookCard
-                            :bookData="books[j + ((i - 1) * 4) - 1]"
+                            :bookData="books[j + ((i - 1) * 6) - 1]"
                             :rating="ratings[Math.floor(Math.random() * ratings.length)]"
                         ></BookCard>
                     </v-col>

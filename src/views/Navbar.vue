@@ -3,7 +3,6 @@
     app
     dark
     color="#151e29"
-    dense
     >
     <v-img class="mx-2" src="../src/assets/logo.png" max-height="30" max-width="30" contain></v-img>
     <router-link to="/" class="router-link">
@@ -22,9 +21,9 @@
     ></v-text-field>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn small text>Buy</v-btn>
-      <v-btn small text>Sell</v-btn>
-      <v-btn small text to="/register">Log In | Register</v-btn>
+      <v-btn text>Buy</v-btn>
+      <v-btn text>Sell</v-btn>
+      <v-btn text to="/register">Log In | Register</v-btn>
     </v-toolbar-items>
   </v-app-bar>
 </template>

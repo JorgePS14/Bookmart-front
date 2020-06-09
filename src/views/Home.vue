@@ -1,7 +1,7 @@
 <template>
     <div>
         <AdsCarousel style="margin-top:-12px" />
-        <BooksCarousel style="margin-top: -300px"/>
+        <BooksCarousel style="margin-top: -400px"/>
     </div>
 </template>
 

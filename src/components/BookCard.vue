@@ -1,11 +1,11 @@
 <template>
     <v-card
         :loading="loading"
-        class="mx-auto my-12"
+        class="mx-auto"
         color="white"
     >
         <v-img
-        height="100"
+        height="140"
         :src="img"
         ></v-img>
 
@@ -13,6 +13,7 @@
         <v-card-text style="margin-top: -24px">
             <v-row
                 align="center"
+                justify="center"
                 class="mx-0"
             >
                 <v-rating
