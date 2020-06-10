@@ -59,12 +59,12 @@ export default {
 
             var listingFormData = new FormData();
             listingFormData.append('photo', this.img);
-            listingFormData.set('description', this.description);
-            listingFormData.set('condition', parseInt(1));
-            listingFormData.set('no_available', parseInt(this.no_available));
-            listingFormData.set('price', parseInt(this.price));
-            listingFormData.set('user_id', parseInt(1));
-            listingFormData.set('book_id', parseInt(this.book_id));
+            listingFormData.append('description', this.description);
+            listingFormData.append('condition', parseInt(this.condition));
+            listingFormData.append('no_available', parseInt(this.no_available));
+            listingFormData.append('price', parseInt(this.price));
+            listingFormData.append('user_id', parseInt(1));
+            listingFormData.append('book_id', parseInt(this.book_id));
 
             axios({
                 method: "post",
@@ -74,14 +74,6 @@ export default {
             }).then((response) => {
                 console.log(respones);
             });
-
-            const path = "http://0.0.0.0:5000/api/listing"
-            axios.post(path, book).then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error)
-            })
         }
     },
     mounted: function() {
