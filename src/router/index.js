@@ -6,7 +6,6 @@ import Book from '../views/Book'
 import Home from '../views/Home'
 import Listing from '../views/Listing'
 import BookListing from '../views/BookListing'
-import Home from '../views/Home';
 import Login from '../views/Login';
 
 Vue.use(Router)

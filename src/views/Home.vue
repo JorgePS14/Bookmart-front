@@ -5,6 +5,7 @@
     <div v-if="isLoggedIn">
         <h1>welcome {{ user }}</h1>
     </div>
+    </div>
 </template>
 
 <script>
