@@ -44,7 +44,7 @@ export default {
             console.log(response.data)
             for (var i in response.data) {
                 var book = response.data[i];
-                book['photo'] = book['photo'].substring(2, book['photo'].length - 1);
+                //book['photo'] = book['photo'].substring(2, book['photo'].length - 1);
                 this.books.push(response.data[i]);
             }
         });
