@@ -6,6 +6,8 @@ import Book from '../views/Book'
 import Home from '../views/Home'
 import Listing from '../views/Listing'
 import BookListing from '../views/BookListing'
+import Home from '../views/Home';
+import Login from '../views/Login';
 
 Vue.use(Router)
 
@@ -41,6 +43,11 @@ export default new Router({
             path: '/listing-get',
             name: 'BookListing',
             component: BookListing
-        }
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: Login
+        },
     ]
 });

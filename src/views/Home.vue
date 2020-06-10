@@ -2,6 +2,8 @@
     <div>
         <AdsCarousel style="margin-top:-12px" />
         <BooksCarousel style="margin-top: -400px"/>
+    <div v-if="isLoggedIn">
+        <h1>welcome {{ user }}</h1>
     </div>
 </template>
 
@@ -13,6 +15,18 @@ export default {
     components: {
         'AdsCarousel': AdsCarousel,
         'BooksCarousel': BooksCarousel
+    },
+    data() {
+        return {
+        }
+    },
+    computed: {
+        isLoggedIn: function(){
+            return this.$store.getters.isLoggedIn
+        },
+        user: function () {
+            return this.$store.state.user.username;
+        }
     }
 }
 </script>
