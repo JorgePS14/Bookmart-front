@@ -35,9 +35,10 @@ export default new Router({
             component: Book
         },
         {
-            path: '/listing',
+            path: '/listing/:bookId:price',
             name: 'Listing',
-            component: Listing
+            component: Listing,
+            props: true
         },
         {
             path: '/bookListing/:text',

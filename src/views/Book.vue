@@ -36,6 +36,8 @@
 
 <script>
 import axios from 'axios';
+import router from '../router'
+
 export default {
     data() {
         return {
@@ -56,14 +58,16 @@ export default {
                 "isbn": this.isbn,
             };
 
+        console.log(book.id, book.img);
         const path = "http://0.0.0.0:5000/api/book"
             axios.post(path, book).then((response) => {
                 console.log(response);
+                router.push({ name: 'Listing', params: { bookId: response.data.id, price: book.value } })
             })
             .catch((error) => {
                 console.log(error)
             })
-        }
+        } 
     }
 }
 </script>

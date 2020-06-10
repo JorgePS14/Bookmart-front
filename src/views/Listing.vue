@@ -17,18 +17,9 @@
                             label="# Available"
                             outlined
                         ></v-text-field>
-                        <v-text-field v-model="price"
-                            label="Price"
-                            outlined
-                        ></v-text-field>
-                        <v-text-field v-model="user_id"
-                            label="User ID"
-                            outlined
-                        ></v-text-field>
-                        <v-text-field v-model="book_id"
-                            label="Book ID"
-                            outlined
-                        ></v-text-field>
+                        <template>
+                            <v-file-input v-model="img" show-size label="File input" outlined></v-file-input>
+                        </template>
                         <v-btn v-on:click="submit" color="success" large dark>Submit</v-btn>
                     </v-form>
                 </v-col>
@@ -40,6 +31,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -49,6 +41,7 @@ export default {
             price: "",
             user_id: "",
             book_id: "",
+            img: "",
         }
     },
     methods: {
@@ -58,9 +51,29 @@ export default {
                 condition: this.condition,
                 no_available: this.no_available,
                 price: this.price,
-                user_id: this.user_id,
+                user_id: 1,
                 book_id: this.book_id,
+                img: this.img,
             };
+
+
+            var listingFormData = new FormData();
+            listingFormData.append('photo', this.img);
+            listingFormData.set('description', this.description);
+            listingFormData.set('condition', parseInt(1));
+            listingFormData.set('no_available', parseInt(this.no_available));
+            listingFormData.set('price', parseInt(this.price));
+            listingFormData.set('user_id', parseInt(1));
+            listingFormData.set('book_id', parseInt(this.book_id));
+
+            axios({
+                method: "post",
+                url: "http://0.0.0.0:5000/api/listing",
+                data: listingFormData,
+                headers: {'Content-Type': 'multipart/form-data' }
+            }).then((response) => {
+                console.log(respones);
+            });
 
             const path = "http://0.0.0.0:5000/api/listing"
             axios.post(path, book).then((response) => {
@@ -70,24 +83,10 @@ export default {
                 console.log(error)
             })
         }
+    },
+    mounted: function() {
+        this.book_id =  this.$route.params.bookId;
+        this.price =  this.$route.params.price;
     }
 }
 </script>
-
-"""
-CREATE TABLE `listing` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `photo` longblob NOT NULL,
-  `description` varchar(200) NOT NULL,
-  `condition` int NOT NULL,
-  `no_available` int DEFAULT NULL,
-  `price` float DEFAULT NULL,
-  `user_id` int NOT NULL,
-  `book_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `book_id` (`book_id`),
-  CONSTRAINT `listing_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `listing_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-"""

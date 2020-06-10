@@ -22,7 +22,7 @@
     ></v-text-field>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn text>Sell</v-btn>
+      <v-btn @click="goToSell" text>Sell</v-btn>
       <v-btn v-if='!isLoggedIn' text to="/login">Log in</v-btn>
       <v-btn v-if='!isLoggedIn' text to="/register">Register</v-btn>
       <v-btn v-if='isLoggedIn' text v-on:click="logout">Logout</v-btn>
@@ -48,6 +48,9 @@ export default {
     },
     search: function(event) {
       router.push({ name: 'BookListing', params: { text: this.select, books: this.books } })
+    },
+    goToSell: function(event) {
+      router.push({ name: 'Book' })
     }
   },
   computed: {
