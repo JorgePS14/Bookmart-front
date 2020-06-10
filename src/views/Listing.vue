@@ -54,7 +54,7 @@ export default {
             listingFormData.append('condition', parseInt(this.condition));
             listingFormData.append('no_available', parseInt(this.no_available));
             listingFormData.append('price', parseInt(this.price));
-            listingFormData.append('user_id', parseInt(1));
+            listingFormData.append('user_id', parseInt(this.$store.getters.isLoggedIn));
             listingFormData.append('book_id', parseInt(this.book_id));
 
             axios({
