@@ -12,7 +12,7 @@
             :src="img"
         ></v-img>
 
-        <div class="my-2 subtitle-1 ellipsis" style="color: black">{{bookData['description']}}</div>
+        <div class="my-2 subtitle-1 ellipsis" style="color: black">{{bookName}}</div>
         <v-card-text style="margin-top: -24px">
             <v-row
                 align="center"
@@ -43,7 +43,7 @@ import '../styles/BookCard.css'
 
 export default {
     name: 'BookCard',
-    props: ['bookData', 'rating', 'numOfRates'],
+    props: ['bookData', 'bookName', 'rating', 'numOfRates'],
     data() {
         return {
             img: "../assets/books-default.jpg",

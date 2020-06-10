@@ -24,9 +24,10 @@ export default new Router({
             component: Register
         },
         {
-            path: '/bookData',
+            path: '/bookData/:bookListing',
             name: 'BookData',
-            component: BookData
+            component: BookData,
+            props: true
         },
         {
             path: '/book',

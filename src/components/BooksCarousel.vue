@@ -23,6 +23,7 @@
                         <BookCard
                             @click.native="onCardSelected(books[j + ((i - 1) * 6) - 1])"
                             :bookData="books[j + ((i - 1) * 6) - 1]"
+                            :bookName="names[j + ((i - 1) * 6) - 1]"
                             :rating="ratings[Math.floor(Math.random() * ratings.length)]"
                             :numOfRates="Math.floor(Math.random() * 1000)"
                         ></BookCard>
@@ -47,18 +48,21 @@ export default {
     },
     methods: {
         onCardSelected: function (bookData) {
-            console.log(bookData['description']);
-            router.push('bookData')
+            router.push({ name: 'BookData', params: { bookListing: bookData } })
         }
     },
     mounted: function () {
-        const path = "http://0.0.0.0:5000/api/listing"
-        axios.get(path).then((response) => {
+        axios.get("http://0.0.0.0:5000/api/listing").then((response) => {
             for (var i in response.data) {
                 var book = response.data[i];
+
+                axios.get("http://0.0.0.0:5000/api/book/" + book['book_id']).then((res) => {
+                    console.log(res.data.name);
+                    this.names.push(res.data.name);
+                });
+                console.log(book['name']);
                 book['photo'] = book['photo'].substring(2, book['photo'].length - 1);
                 this.books.push(book);
-                console.log(this.books[i]['photo'])
             }
         })
         .catch((error) => {
@@ -68,6 +72,7 @@ export default {
     data () {
         return {
             books:[],
+            names: [],
             ratings: [3.0, 3.5, 4.0, 4.5, 5.0],
         }
     },

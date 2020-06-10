@@ -18,8 +18,8 @@
                 align="center"
                 justify="center"
             >
-                <div style="width: 100%">
-                    <img  v-bind:src="getImgUrl(slide)" style="width: 100%" />
+                <div style="height: 100%">
+                    <img v-bind:src="getImgUrl(slide)" style="width: 100%" />
                 </div>
             </v-row>
         </v-sheet>
