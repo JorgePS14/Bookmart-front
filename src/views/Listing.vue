@@ -31,6 +31,7 @@
 
 <script>
 import axios from 'axios';
+import router from '../router';
 
 export default {
     data() {
@@ -46,16 +47,6 @@ export default {
     },
     methods: {
         submit: function (event) {
-            var book = {
-                description: this.description,
-                condition: this.condition,
-                no_available: this.no_available,
-                price: this.price,
-                user_id: 1,
-                book_id: this.book_id,
-                img: this.img,
-            };
-
 
             var listingFormData = new FormData();
             listingFormData.append('photo', this.img);
@@ -73,7 +64,9 @@ export default {
                 headers: {'Content-Type': 'multipart/form-data' }
             }).then((response) => {
                 console.log(respones);
+                
             });
+            router.push({ name: 'Home' })
         }
     },
     mounted: function() {
