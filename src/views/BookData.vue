@@ -30,7 +30,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$route.params.bookListing['user_id']);
         this.bookData = this.$route.params.bookListing;
     }
 }

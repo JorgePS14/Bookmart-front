@@ -9,8 +9,8 @@
                     md="3"
                 >
                 <BookCard
-                        @click.native="onCardSelected(books[n])"
-                        :bookData="books[n]"
+                        @click.native="onCardSelected(books[n - 1])"
+                        :bookData="books[n - 1]"
                         :rating="ratings[Math.floor(Math.random() * ratings.length)]"
                         :numOfRates="Math.floor(Math.random() * 1000)"
                     ></BookCard>
@@ -34,26 +34,26 @@ export default {
         onCardSelected: function (bookData) {
             router.push({ name: 'BookData', params: { bookListing: bookData } })
         }
+
     },
     mounted: function () {
+        this.text = this.$route.params.text;
+
         const path = "http://0.0.0.0:5000/api/listing"
         axios.get(path).then((response) => {
             for (var i in response.data) {
                 var book = response.data[i];
                 book['photo'] = book['photo'].substring(2, book['photo'].length - 1);
-                this.books.push(book);
-                console.log(book['book_id']);
+                this.books.push(response.data[i]);
             }
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+        });
 
-        console.log(this.$route.params.text);
     },
     data () {
         return {
             books:[],
+            showBooks: [],
+            text: null,
             ratings: [3.0, 3.5, 4.0, 4.5, 5.0],
         }
     },

@@ -36,7 +36,7 @@ import router from '../router'
 export default {
   data () {
     return {
-        select: null
+        select: null,
     }
   },
   methods: {
@@ -47,7 +47,7 @@ export default {
         })
     },
     search: function(event) {
-      router.push({ name: 'BookListing', params: { text: this.select } })
+      router.push({ name: 'BookListing', params: { text: this.select, books: this.books } })
     }
   },
   computed: {
