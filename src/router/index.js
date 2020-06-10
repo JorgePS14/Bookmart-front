@@ -40,9 +40,10 @@ export default new Router({
             component: Listing
         },
         {
-            path: '/listing-get',
+            path: '/bookListing/:text',
             name: 'BookListing',
-            component: BookListing
+            component: BookListing,
+            props: true
         },
         {
             path: '/login',

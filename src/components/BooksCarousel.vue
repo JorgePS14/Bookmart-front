@@ -23,7 +23,6 @@
                         <BookCard
                             @click.native="onCardSelected(books[j + ((i - 1) * 6) - 1])"
                             :bookData="books[j + ((i - 1) * 6) - 1]"
-                            :bookName="names[j + ((i - 1) * 6) - 1]"
                             :rating="ratings[Math.floor(Math.random() * ratings.length)]"
                             :numOfRates="Math.floor(Math.random() * 1000)"
                         ></BookCard>
@@ -55,10 +54,6 @@ export default {
         axios.get("http://0.0.0.0:5000/api/listing").then((response) => {
             for (var i in response.data) {
                 var book = response.data[i];
-                axios.get("http://0.0.0.0:5000/api/book/" + book['book_id']).then((res) => {
-                    this.names.push(res.data.name);
-                });
-                console.log(book['name']);
                 book['photo'] = book['photo'].substring(2, book['photo'].length - 1);
                 this.books.push(book);
             }

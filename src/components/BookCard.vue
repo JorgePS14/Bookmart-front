@@ -12,7 +12,7 @@
             :src="img"
         ></v-img>
 
-        <div class="my-2 subtitle-1 ellipsis" style="color: black">{{bookName}}</div>
+        <div class="my-2 subtitle-1 ellipsis" style="color: black">{{book['name']}}</div>
         <v-card-text style="margin-top: -24px">
             <v-row
                 align="center"
@@ -40,19 +40,24 @@
 
 <script>
 import '../styles/BookCard.css'
+import axios from 'axios';
 
 export default {
     name: 'BookCard',
-    props: ['bookData', 'bookName', 'rating', 'numOfRates'],
+    props: ['bookData', 'rating', 'numOfRates'],
     data() {
         return {
             img: "../assets/books-default.jpg",
             ratings: [3.0, 3.5, 4.0, 4.5, 5.0],
+            book: null,
         }
     },
     mounted() {
-        console.log(this.img)
         this.img = this.bookData['photo']
+        
+        axios.get("http://0.0.0.0:5000/api/book/" + this.bookData['book_id']).then((response) => {
+            this.book = response.data;
+        });
     }
 }
 </script>

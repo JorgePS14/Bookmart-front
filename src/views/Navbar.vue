@@ -11,6 +11,7 @@
       </v-toolbar-title>
     </router-link>
     <v-text-field
+      @keydown.enter="search"
       v-model="select"
       dense
       flat
@@ -21,7 +22,6 @@
     ></v-text-field>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn text>Buy</v-btn>
       <v-btn text>Sell</v-btn>
       <v-btn v-if='!isLoggedIn' text to="/login">Log in</v-btn>
       <v-btn v-if='!isLoggedIn' text to="/register">Register</v-btn>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import router from '../router'
+
 export default {
   data () {
     return {
@@ -43,6 +45,9 @@ export default {
         .then(() => {
           this.$router.push('/login')
         })
+    },
+    search: function(event) {
+      router.push({ name: 'BookListing', params: { text: this.select } })
     }
   },
   computed: {
