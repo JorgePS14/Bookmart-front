@@ -55,9 +55,7 @@ export default {
         axios.get("http://0.0.0.0:5000/api/listing").then((response) => {
             for (var i in response.data) {
                 var book = response.data[i];
-
                 axios.get("http://0.0.0.0:5000/api/book/" + book['book_id']).then((res) => {
-                    console.log(res.data.name);
                     this.names.push(res.data.name);
                 });
                 console.log(book['name']);
