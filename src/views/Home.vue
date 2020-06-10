@@ -1,10 +1,7 @@
 <template>
     <div>
-        <AdsCarousel style="margin-top:-12px" />
+        <AdsCarousel />
         <BooksCarousel style="margin-top: -400px"/>
-    <div v-if="isLoggedIn">
-        <h1>welcome {{ user }}</h1>
-    </div>
     </div>
 </template>
 
